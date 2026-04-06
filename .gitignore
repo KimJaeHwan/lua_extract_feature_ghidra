@@ -1,0 +1,44 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Ghidra runtime artifacts
+extractor/ghidra_projects/
+*.rep
+*.gpr
+*.gpr.lock
+*.i64
+
+# Generated inputs / outputs
+binaries/**
+!binaries/
+!binaries/**/
+!binaries/**/.gitkeep
+processed_binaries/
+quarantine/
+outputs/**
+!outputs/
+!outputs/**/
+!outputs/Lua_547/
+!outputs/Lua_547/x86_64/
+!outputs/Lua_547/x86_64/O0/
+!outputs/Lua_547/x86_64/O0/nostrip/
+!outputs/Lua_547/x86_64/O0/nostrip/x86_64_O0_nostrip_lua_lua_547_0000_20260405_100336.json
+outputs_lua_feature_jsonl/
+samples/
+
+# Local vector DB / caches
+lua_rag_db/
+*.sqlite3
+
+# Archives and temporary files
+*.zip
+*.log
+*.tmp
+*.temp
