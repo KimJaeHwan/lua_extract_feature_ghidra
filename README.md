@@ -127,20 +127,21 @@ lua_extract_feature_ghidra/
 ### 2. PyGhidra 기반 추출 실행
 
 ```bash
+python extractor/final_pyghidra_feature_extractor_origin.py
 python extractor/final_pyghidra_feature_extractor.py
 ```
+각각 binaries 디렉토리 내부에 있는 바이너리를 순차적으로 순회하며 feature를 추출합니다. 
+ghidra 특성상 연속적인 analyze는 메모리를 매우 많이 잡아 먹으며, 이를 고려하여 사용해야 합니다. 
+(origin이 붙지 않은 코드는 멀티 프로세싱 환경으로 실행후 2시간 만에 OOM이 발생할 수 있습니다.)
+
 
 ### 3. watchdog 기반 장시간 실행
 
 ```bash
 bash run_watchdog.sh
 ```
-
-### 4. Headless 배치 실행
-
-```bash
-python extractor/12_batch_run_headless.py
-```
+ghidra의 연속적인 analyze로 인한 메모리 OOM을 해결하기 위한 Helper script입니다. 
+메모리를 지속적으로 감시하며 일정 수준을 초과 할 시 강제로 프로세스롤 종료하고 재시작합니다. 
 
 ## 현재 프로젝트 범위
 
@@ -152,19 +153,6 @@ python extractor/12_batch_run_headless.py
 - 결과 JSON 및 후처리용 데이터 정리
 
 즉, 완성형 제품보다는 연구와 실험을 위한 분석 자동화 도구에 가깝습니다.
-
-## Git 관리 방침
-
-이 저장소에서는 다음 항목들을 Git에서 제외합니다.
-
-- Ghidra 프로젝트 캐시
-- 분석 결과 JSON / JSONL
-- 중간 처리 디렉토리
-- 로컬 실험용 DB
-- 대용량 바이너리 및 압축 파일
-- 과거 실험용 `samples/` 폴더
-
-반대로, 추출 로직을 담은 스크립트와 실행 흐름을 설명하는 문서, 그리고 구조 설명용 최소 샘플은 저장소에 포함합니다.
 
 ## 참고
 
