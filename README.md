@@ -47,6 +47,8 @@
 
 즉, “한 번 디컴파일해서 결과를 덤프한다”가 아니라, 함수 의미와 구조를 동시에 반영하는 feature 세트를 만들려는 방향이 보입니다.
 
+추출되는 feature JSON의 필드 구조와, 각 필드가 Ghidra 내부의 어떤 분석 단계에서 나오는지는 [FEATURE_SCHEMA.md](./FEATURE_SCHEMA.md)에서 자세히 볼 수 있습니다.
+
 ## 폴더 구조
 
 전체 디렉토리 구조와 각 폴더의 역할은 [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)에서 따로 볼 수 있습니다.

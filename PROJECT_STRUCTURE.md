@@ -9,7 +9,8 @@ lua_extract_feature_ghidra/
 ├── .gitignore
 ├── README.md
 ├── PROJECT_STRUCTURE.md
-├── LuaMapper Agent 전체흐름도
+├── FEATURE_SCHEMA.md
+├── LuaMapper_Agent_전체흐름도.md
 ├── run_watchdog.sh
 ├── extractor/
 │   ├── 01_lua_feature_extractor.py
@@ -48,6 +49,8 @@ lua_extract_feature_ghidra/
 
 ## 디렉토리 역할
 
+- `FEATURE_SCHEMA.md`
+  - 추출되는 함수 feature JSON의 구조와 각 필드의 추출 근거를 설명하는 문서입니다.
 - `extractor/`
   - Ghidra / PyGhidra 기반 feature 추출 스크립트가 모여 있는 핵심 코드 디렉토리입니다.
 - `binaries/`
@@ -60,12 +63,6 @@ lua_extract_feature_ghidra/
   - 분석 완료 후 이동된 바이너리 보관 위치입니다.
 - `quarantine/`
   - 타임아웃 또는 오류로 분리된 바이너리 보관 위치입니다.
-- `lua_rag_db/`
-  - 과거 실험용 로컬 DB 산출물 위치입니다.
-  - 현재는 Git에 포함하지 않습니다.
-- `samples/`
-  - 과거 샘플/실험 입력 보관 위치입니다.
-  - 현재는 사용하지 않으며 Git에서도 제외합니다.
 
 ## Git 포함 원칙
 
