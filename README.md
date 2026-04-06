@@ -49,7 +49,7 @@
 
 ## 폴더 구조
 
-전체 디렉토리 구조와 각 폴더의 역할은 [`PROJECT_STRUCTURE.md`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/PROJECT_STRUCTURE.md)에서 따로 볼 수 있습니다.
+전체 디렉토리 구조와 각 폴더의 역할은 [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)에서 따로 볼 수 있습니다.
 
 ```text
 lua_extract_feature_ghidra/
