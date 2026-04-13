@@ -28,6 +28,7 @@ lua_extract_feature_ghidra/
 │   ├── check_list_json.py
 │   ├── final_pyghidra_feature_extractor.py
 │   ├── final_pyghidra_feature_extractor_origin.py
+│   ├── final_pyghidra_feature_extractor_vanilla.py
 │   └── ghidra_headless_sh_test.sh
 ├── binaries/
 │   └── Lua_547/
@@ -59,6 +60,9 @@ lua_extract_feature_ghidra/
 - `outputs/`
   - 추출 결과 JSON이 저장되는 위치입니다.
   - 저장소에는 구조와 결과 형태 예시를 보여주기 위한 x86_64 샘플 JSON 1개만 포함합니다.
+- `outputs_vanilla/`
+  - 순정 Lua 바이너리 기준 feature JSON이 저장되는 위치입니다.
+  - call graph propagation 단계에서 reference call graph를 만들기 위한 입력으로 사용할 수 있습니다.
 - `processed_binaries/`
   - 분석 완료 후 이동된 바이너리 보관 위치입니다.
 - `quarantine/`

@@ -89,6 +89,7 @@ lua_extract_feature_ghidra/
 
 - [`run_watchdog.sh`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/run_watchdog.sh): 메모리 사용량을 감시하면서 메인 추출 스크립트를 재시작하는 watchdog
 - [`final_pyghidra_feature_extractor.py`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/extractor/final_pyghidra_feature_extractor.py): PyGhidra 기반 최종 feature 추출기
+- [`final_pyghidra_feature_extractor_vanilla.py`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/extractor/final_pyghidra_feature_extractor_vanilla.py): 바닐라 Lua 바이너리 전용 feature 추출기. 기본 입력은 `../lua_custom_engine_generator/binaries_vanilla`, 기본 출력은 `outputs_vanilla/`입니다.
 - [`11_feature_extractor_post.py`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/extractor/11_feature_extractor_post.py): Ghidra Headless post script 형태의 feature 추출기
 - [`12_batch_run_headless.py`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/extractor/12_batch_run_headless.py): analyzeHeadless 기반 배치 실행기
 - [`06_RAG_dataset.py`](/Users/test2000/Desktop/01_project/01_AI_Project/03_Lua_Mapper/lua_extract_feature_ghidra/extractor/06_RAG_dataset.py): 추출 결과를 기반으로 실험용 DB를 구성하는 스크립트
@@ -136,8 +137,37 @@ python extractor/final_pyghidra_feature_extractor.py
 ghidra 특성상 연속적인 analyze는 메모리를 매우 많이 잡아 먹으며, 이를 고려하여 사용해야 합니다. 
 (origin이 붙지 않은 코드는 멀티 프로세싱 환경으로 실행후 2시간 만에 OOM이 발생할 수 있습니다.)
 
+### 3. 바닐라 Lua 바이너리 추출
 
-### 3. watchdog 기반 장시간 실행
+`lua_custom_engine_generator/binaries_vanilla`에 빌드된 순정 Lua 바이너리를 기준 feature로 추출할 때는 바닐라 전용 스크립트를 사용합니다.
+
+```bash
+../lua_llm/bin/python extractor/final_pyghidra_feature_extractor_vanilla.py --workers 1
+```
+
+기본적으로 `nostrip` 바이너리만 처리하고 결과는 `outputs_vanilla/` 아래에 저장합니다. stripped 바이너리까지 같이 처리하려면 `--include-stripped`를 추가합니다.
+
+```bash
+../lua_llm/bin/python extractor/final_pyghidra_feature_extractor_vanilla.py --workers 1 --include-stripped
+```
+
+입력 경로를 직접 지정해야 하는 경우에는 다음처럼 실행합니다.
+
+```bash
+../lua_llm/bin/python extractor/final_pyghidra_feature_extractor_vanilla.py \
+  --input-dir ../lua_custom_engine_generator/binaries_vanilla \
+  --output-dir outputs_vanilla \
+  --workers 1
+```
+
+실제 Ghidra 분석 전에 대상만 확인하려면 다음처럼 실행할 수 있습니다.
+
+```bash
+../lua_llm/bin/python extractor/final_pyghidra_feature_extractor_vanilla.py --list-only
+```
+
+
+### 4. watchdog 기반 장시간 실행
 
 ```bash
 bash run_watchdog.sh

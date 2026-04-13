@@ -10,6 +10,7 @@ __pycache__/
 
 # Ghidra runtime artifacts
 extractor/ghidra_projects/
+extractor/ghidra_projects_vanilla/
 *.rep
 *.gpr
 *.gpr.lock
@@ -31,6 +32,7 @@ outputs/**
 !outputs/Lua_547/x86_64/O0/nostrip/
 !outputs/Lua_547/x86_64/O0/nostrip/x86_64_O0_nostrip_lua_lua_547_0000_20260405_100336.json
 outputs_lua_feature_jsonl/
+outputs_vanilla/
 samples/
 
 # Local vector DB / caches
